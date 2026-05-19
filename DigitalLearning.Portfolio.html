@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rukshar Begum — Digital Learning Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #141414;
+  --cream: #F8F5F0;
+  --warm: #F0EBE1;
+  --green: #1A6B4A;
+  --green-soft: #EAF4EE;
+  --green-mid: #2EA66E;
+  --accent: #2B5BA8;
+  --accent-soft: #EBF0FB;
+  --rust: #C4541A;
+  --rust-soft: #FBF0EB;
+  --gold: #B8892A;
+  --gold-soft: #FBF4E8;
+  --border: #E2DDD6;
+  --muted: #7A756C;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
+ 
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 3rem;
+  background: rgba(248,245,240,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+.nav-cta { background: var(--green); color: white; padding: 0.45rem 1.1rem; border-radius: 3px; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
+.nav-cta:hover { background: #145739; }
+ 
+/* HERO */
+.hero {
+  min-height: 100vh; padding: 8rem 3rem 5rem;
+  display: grid; grid-template-columns: 5fr 4fr; gap: 5rem; align-items: center;
+  position: relative;
+}
+.hero::after {
+  content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
+  background: var(--warm); z-index: 0; border-left: 1px solid var(--border);
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-right { position: relative; z-index: 1; }
+ 
+.avail-tag {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  border: 1px solid #C0DDD0; color: var(--green);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 2px;
+  margin-bottom: 1.75rem; background: var(--green-soft);
+}
+.avail-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+ 
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2.6rem, 4.2vw, 4rem);
+  line-height: 1.08; font-weight: 600; margin-bottom: 1.25rem;
+}
+.hero h1 .hl { color: var(--green); }
+.hero-desc { font-size: 1rem; color: var(--muted); max-width: 460px; line-height: 1.8; margin-bottom: 2rem; }
+ 
+.hero-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.25rem; }
+.pill { font-size: 0.75rem; font-weight: 500; padding: 0.3rem 0.8rem; border-radius: 2px; letter-spacing: 0.02em; border: 1px solid transparent; }
+.pill.g { background: var(--green-soft); color: var(--green); border-color: #C0DDD0; }
+.pill.b { background: var(--accent-soft); color: var(--accent); border-color: #BECCEE; }
+.pill.o { background: var(--rust-soft); color: var(--rust); border-color: #F0C8B4; }
+.pill.w { background: var(--gold-soft); color: var(--gold); border-color: #EBCD88; }
+ 
+.hero-btns { display: flex; gap: 0.85rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; font-weight: 600; padding: 0.75rem 1.6rem; border-radius: 3px; text-decoration: none; transition: all 0.2s; }
+.btn-g { background: var(--green); color: white; }
+.btn-g:hover { background: #145739; transform: translateY(-1px); }
+.btn-o { border: 1.5px solid var(--ink); color: var(--ink); }
+.btn-o:hover { background: var(--ink); color: white; }
+ 
+/* PROFILE CARD */
+.profile-box { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+.p-avatar {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--green) 30%, #2B8C60 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1.5rem; color: white; margin-bottom: 1rem; font-weight: 600;
+}
+.p-name { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; margin-bottom: 0.15rem; }
+.p-role { color: var(--green); font-size: 0.83rem; font-weight: 600; margin-bottom: 1.2rem; }
+.p-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+.p-row { display: flex; gap: 0.6rem; align-items: center; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.55rem; }
+.p-row svg { width: 14px; height: 14px; color: var(--green); flex-shrink: 0; }
+.p-badge {
+  display: flex; gap: 0.65rem; align-items: flex-start;
+  border-radius: 6px; padding: 0.7rem 0.85rem; margin-bottom: 0.5rem;
+}
+.p-badge.gold { background: var(--gold-soft); border: 1px solid #EBCD88; }
+.p-badge.green { background: var(--green-soft); border: 1px solid #C0DDD0; }
+.p-badge.rust { background: var(--rust-soft); border: 1px solid #F0C8B4; }
+.p-badge-icon { font-size: 1rem; margin-top: 0.05rem; }
+.p-badge-text { font-size: 0.77rem; line-height: 1.45; }
+.p-badge.gold .p-badge-text { color: var(--gold); font-weight: 600; }
+.p-badge.green .p-badge-text { color: var(--green); font-weight: 600; }
+.p-badge.rust .p-badge-text { color: var(--rust); font-weight: 600; }
+ 
+/* SECTIONS */
+.sec { padding: 5.5rem 3rem; }
+.sec-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 0.6rem; }
+.sec-title { font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.12; margin-bottom: 0.75rem; font-weight: 600; }
+.sec-desc { font-size: 0.95rem; color: var(--muted); max-width: 580px; line-height: 1.8; }
+ 
+/* WORK SAMPLES NAV */
+.samples-nav {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2rem 0 3.5rem;
+  padding: 1.25rem; background: white; border: 1px solid var(--border); border-radius: 8px;
+}
+.samples-nav a {
+  font-size: 0.8rem; font-weight: 600; padding: 0.45rem 1rem;
+  border-radius: 3px; text-decoration: none; border: 1px solid transparent;
+  transition: all 0.2s; color: var(--muted); background: var(--warm);
+}
+.samples-nav a:hover { background: var(--green); color: white; }
+.samples-nav-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); align-self: center; margin-right: 0.25rem; }
+ 
+/* SAMPLE BLOCK */
+.sample-block { margin-bottom: 5rem; }
+.sample-block:last-child { margin-bottom: 0; }
+.sample-header {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+  padding-bottom: 1.25rem; border-bottom: 1.5px solid var(--border);
+}
+.sample-num {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  color: white; background: var(--green); padding: 0.3rem 0.7rem; border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+.sample-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; }
+.sample-tool { font-size: 0.75rem; color: var(--muted); background: var(--warm); border: 1px solid var(--border); padding: 0.25rem 0.65rem; border-radius: 2px; margin-left: auto; font-family: var(--mono); }
+ 
+/* ===== SAMPLE 1: E-LEARNING MODULE ===== */
+.module-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: start; }
+ 
+.browser-mockup { background: var(--ink); border-radius: 10px; overflow: hidden; box-shadow: 0 20px 48px rgba(0,0,0,0.18); }
+.browser-bar { background: #1E1E1E; padding: 0.65rem 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.bdot { width: 9px; height: 9px; border-radius: 50%; }
+.bdot-r { background: #FF5F57; } .bdot-y { background: #FFBD2E; } .bdot-g { background: #28C840; }
+.burl { flex: 1; background: #2A2A2A; border-radius: 3px; padding: 0.22rem 0.7rem; font-family: var(--mono); font-size: 0.65rem; color: #666; margin-left: 0.5rem; }
+ 
+.slide-header { background: linear-gradient(135deg, #0D3B26 0%, #1A6B4A 100%); padding: 1.4rem; }
+.slide-course { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.35rem; }
+.slide-q { font-family: var(--serif); font-size: 1.2rem; color: white; line-height: 1.3; }
+.slide-prog { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; }
+.prog-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.18); border-radius: 2px; }
+.prog-fill { height: 100%; border-radius: 2px; }
+.prog-label { font-size: 0.62rem; color: rgba(255,255,255,0.5); font-family: var(--mono); }
+ 
+.slide-body { background: #F8F5F0; padding: 1.2rem; }
+.scenario-box { background: white; border-left: 3px solid var(--green); padding: 0.85rem 1rem; border-radius: 0 5px 5px 0; margin-bottom: 1rem; font-size: 0.78rem; color: var(--ink); line-height: 1.65; }
+.scenario-box b { color: var(--green); }
+.choices-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+.choices { display: flex; flex-direction: column; gap: 0.4rem; }
+.choice { padding: 0.5rem 0.85rem; border-radius: 4px; font-size: 0.75rem; border: 1px solid var(--border); background: white; color: var(--ink); display: flex; align-items: center; gap: 0.5rem; }
+.choice.ok { background: var(--green-soft); border-color: #2EA66E; color: var(--green); font-weight: 600; }
+.choice.no { background: var(--rust-soft); border-color: #E09070; color: var(--rust); }
+.choice-dot { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid currentColor; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.choice.ok .choice-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+ 
+.slide-nav { background: #EEEBE6; padding: 0.65rem 1.2rem; display: flex; align-items: center; justify-content: space-between; }
+.snav-btn { font-size: 0.68rem; font-weight: 600; padding: 0.32rem 0.85rem; border-radius: 3px; border: none; cursor: pointer; font-family: var(--sans); }
+.snav-back { background: white; border: 1px solid var(--border); color: var(--muted); }
+.snav-next { background: var(--green); color: white; }
+.slide-count { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); }
+ 
+.module-notes { display: flex; flex-direction: column; gap: 1.25rem; }
+.note-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; background: var(--cream); }
+.note-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.note-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.45rem; }
+.note-body { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+.note-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+.ntag { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 2px; font-weight: 500; }
+.ntag.g { background: var(--green-soft); color: var(--green); }
+.ntag.b { background: var(--accent-soft); color: var(--accent); }
+.ntag.o { background: var(--rust-soft); color: var(--rust); }
+.spec-box { background: var(--green-soft); border: 1px solid #C0DDD0; border-radius: 6px; padding: 1rem 1.1rem; }
+.spec-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 0.4rem; }
+.spec-body { font-size: 0.78rem; color: var(--green); line-height: 1.7; }
+ 
+/* ===== SAMPLE 2: STORYBOARD ===== */
+.sb-intro { padding: 1rem 1.25rem; background: var(--gold-soft); border: 1px solid #EBCD88; border-radius: 6px; margin-bottom: 1.75rem; }
+.sb-intro-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+.sb-intro-text { font-size: 0.85rem; color: #7A6020; line-height: 1.65; }
+ 
+.sb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.sb-frame { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.sb-screen { height: 130px; position: relative; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.45rem; }
+.sb-n1 { background: linear-gradient(135deg, #0D3B26, #2EA66E); }
+.sb-n2 { background: linear-gradient(135deg, #1B1B3A, #3B3B7A); }
+.sb-n3 { background: linear-gradient(135deg, #3B1500, #C4541A); }
+.sb-n4 { background: linear-gradient(135deg, #1A2A1A, #3A6A3A); }
+.sb-n5 { background: linear-gradient(135deg, #2A1A00, #B8892A); }
+.sb-n6 { background: linear-gradient(135deg, #141414, #3A3A3A); }
+.sb-frame-num { position: absolute; top: 0.5rem; left: 0.6rem; font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.45); }
+.sb-frame-icon { font-size: 1.9rem; }
+.sb-frame-caption { font-family: var(--serif); font-size: 0.72rem; color: white; text-align: center; padding: 0 0.75rem; opacity: 0.9; line-height: 1.3; }
+.sb-meta { padding: 0.9rem; }
+.sb-scene-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.sb-text { font-size: 0.77rem; color: var(--ink); line-height: 1.6; }
+.sb-text b { color: var(--ink); font-weight: 600; }
+.sb-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.55rem; }
+.sb-chip { font-size: 0.63rem; background: var(--warm); color: var(--muted); padding: 0.18rem 0.5rem; border-radius: 2px; font-family: var(--mono); }
+ 
+/* ===== SAMPLE 3: SCRIPT ===== */
+.script-layout { display: grid; grid-template-columns: 2fr 1.1fr; gap: 2rem; align-items: start; }
+.script-doc { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.script-head { background: var(--ink); color: white; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+.script-head-title { font-family: var(--serif); font-size: 0.98rem; }
+.script-fmt { font-family: var(--mono); font-size: 0.62rem; color: var(--green-mid); border: 1px solid #2A5A3A; padding: 0.18rem 0.5rem; border-radius: 2px; }
+.script-body { padding: 0 1.25rem 1.25rem; }
+.script-cols { display: grid; grid-template-columns: 72px 1fr 1fr; gap: 0.85rem; padding: 0.6rem 0; }
+.script-col-head { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.script-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+.script-row { display: grid; grid-template-columns: 72px 1fr 1fr; gap: 0.85rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+.script-row:last-child { border-bottom: none; }
+.tc { font-family: var(--mono); font-size: 0.72rem; color: var(--green); }
+.vis { font-size: 0.77rem; color: var(--muted); line-height: 1.6; font-style: italic; }
+.aud { font-size: 0.77rem; color: var(--ink); line-height: 1.65; }
+.aud em { color: var(--rust); font-style: normal; font-weight: 600; }
+ 
+.script-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+.ss-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
+.ss-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+.ss-item { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.6rem; }
+.ss-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); margin-top: 0.45rem; flex-shrink: 0; }
+.ss-text { font-size: 0.79rem; color: var(--ink); line-height: 1.55; }
+.ss-text b { font-weight: 600; }
+ 
+/* ===== SAMPLE 4: ASSESSMENT ===== */
+.assessment-layout { display: grid; grid-template-columns: 340px 1fr; gap: 2.5rem; align-items: start; }
+.quiz-phone { background: var(--ink); border-radius: 28px; padding: 1.75rem 1.1rem 1.4rem; box-shadow: 0 24px 60px rgba(0,0,0,0.22); }
+.phone-notch { width: 72px; height: 5px; background: #222; border-radius: 3px; margin: 0 auto 1.4rem; }
+.quiz-card { background: white; border-radius: 14px; overflow: hidden; }
+.quiz-top { background: var(--green); padding: 1.1rem; }
+.quiz-module { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 0.25rem; }
+.quiz-qnum { font-size: 0.73rem; color: white; font-family: var(--mono); }
+.quiz-prog { height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-top: 0.7rem; }
+.quiz-prog-fill { height: 100%; background: white; border-radius: 2px; width: 60%; }
+.quiz-q { padding: 1rem; font-family: var(--serif); font-size: 0.97rem; color: var(--ink); line-height: 1.5; border-bottom: 1px solid var(--border); }
+.quiz-opts { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.qopt { padding: 0.5rem 0.7rem; border-radius: 5px; font-size: 0.73rem; border: 1px solid var(--border); color: var(--ink); display: flex; align-items: center; gap: 0.5rem; }
+.qopt.sel { background: var(--green-soft); border-color: var(--green-mid); color: var(--green); font-weight: 600; }
+.qopt-ltr { width: 19px; height: 19px; border-radius: 50%; border: 1.5px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.63rem; font-weight: 700; flex-shrink: 0; }
+.quiz-footer { padding: 0.7rem 1rem; display: flex; justify-content: space-between; align-items: center; background: var(--warm); }
+.quiz-skip { font-size: 0.7rem; color: var(--muted); cursor: pointer; text-decoration: underline; }
+.quiz-submit { background: var(--green); color: white; border: none; padding: 0.45rem 1.1rem; border-radius: 5px; font-size: 0.72rem; font-weight: 600; cursor: pointer; font-family: var(--sans); }
+ 
+.assessment-notes { display: flex; flex-direction: column; gap: 1.25rem; }
+.an-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; background: var(--cream); }
+.an-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+.an-body { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+.an-list { list-style: none; margin-top: 0.6rem; }
+.an-list li { font-size: 0.8rem; color: var(--ink); padding: 0.28rem 0 0.28rem 1.1rem; position: relative; line-height: 1.55; }
+.an-list li::before { content: 'o'; position: absolute; left: 0; color: var(--green); font-size: 0.55rem; top: 0.48rem; }
+ 
+/* ===== SAMPLE 5: VIDEO ===== */
+.vid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.vid-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: white; }
+.vid-thumb { height: 175px; position: relative; display: flex; align-items: center; justify-content: center; }
+.vt1 { background: linear-gradient(135deg, #0D3B26, #2EA66E); }
+.vt2 { background: linear-gradient(135deg, #1B1B3A, #4B4BB5); }
+.vt3 { background: linear-gradient(135deg, #3B1500, #C4541A); }
+.vt4 { background: linear-gradient(135deg, #2A1A00, #B8892A); }
+.play-circle { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.18); border: 2px solid rgba(255,255,255,0.45); display: flex; align-items: center; justify-content: center; }
+.play-circle::after { content: ''; width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 16px solid white; margin-left: 3px; }
+.vid-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); padding: 0.9rem; }
+.vid-title { font-family: var(--serif); font-size: 0.92rem; color: white; line-height: 1.3; }
+.vid-dur { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+.vid-meta { padding: 1rem; }
+.vid-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.7rem; }
+.vid-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.vtag { font-size: 0.67rem; background: var(--warm); color: var(--muted); padding: 0.18rem 0.5rem; border-radius: 2px; }
+ 
+/* EXPERIENCE */
+.exp-sec { background: var(--warm); }
+.timeline { margin-top: 3rem; }
+.tl-item { display: grid; grid-template-columns: 150px 1fr; gap: 2rem; margin-bottom: 2.75rem; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: 150px; top: 0; bottom: -2.75rem; width: 1px; background: var(--border); }
+.tl-item:last-child::before { display: none; }
+.tl-date { text-align: right; }
+.tl-yr { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); font-weight: 500; line-height: 1.5; }
+.tl-dot { position: absolute; left: 144px; top: 0.3rem; width: 13px; height: 13px; border-radius: 50%; background: var(--green); border: 3px solid var(--warm); z-index: 1; }
+.tl-body { padding-left: 2rem; }
+.tl-role { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.15rem; }
+.tl-co { color: var(--green); font-size: 0.86rem; font-weight: 600; margin-bottom: 0.75rem; }
+.tl-pts { list-style: none; }
+.tl-pts li { font-size: 0.845rem; color: var(--muted); padding: 0.28rem 0 0.28rem 1.1rem; position: relative; line-height: 1.65; }
+.tl-pts li::before { content: 'o'; position: absolute; left: 0; color: var(--green); font-size: 0.5rem; top: 0.5rem; }
+.award-tag { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--gold-soft); border: 1px solid #EBCD88; color: var(--gold); font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 2px; margin-left: 0.4rem; vertical-align: middle; }
+ 
+/* TOOLS */
+.tools-sec { background: var(--ink); }
+.tools-sec .sec-label { color: var(--green-mid); }
+.tools-sec .sec-title { color: white; }
+.tools-sec .sec-desc { color: #888; }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; margin-top: 3rem; }
+.tool-blk { background: #111; padding: 1.65rem; border: 1px solid #1A1A1A; transition: background 0.2s; }
+.tool-blk:hover { background: #161616; }
+.tool-icon { font-size: 1.4rem; margin-bottom: 0.7rem; }
+.tool-name { font-family: var(--serif); font-size: 0.98rem; color: white; margin-bottom: 0.25rem; }
+.tool-level { font-size: 0.68rem; color: #555; font-family: var(--mono); margin-bottom: 0.7rem; }
+.tool-bar { height: 2px; background: #222; border-radius: 1px; }
+.tool-fill { height: 100%; background: var(--green); border-radius: 1px; }
+ 
+/* IMPACT */
+.impact-sec { background: var(--green); padding: 5rem 3rem; }
+.impact-sec .sec-label { color: rgba(255,255,255,0.6); }
+.impact-sec .sec-title { color: white; }
+.impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 2px; margin-top: 3rem; }
+.imp-item { background: rgba(0,0,0,0.12); padding: 2.25rem 1.5rem; text-align: center; }
+.imp-num { font-family: var(--serif); font-size: 2.6rem; color: white; font-weight: 600; line-height: 1; }
+.imp-sub { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 0.4rem; line-height: 1.4; }
+ 
+/* CERTS */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+.cert-card { display: flex; gap: 1rem; align-items: flex-start; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; transition: border-color 0.2s; }
+.cert-card:hover { border-color: var(--green); }
+.cert-icon { width: 42px; height: 42px; border-radius: 6px; background: var(--green-soft); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.cert-title { font-weight: 600; font-size: 0.87rem; margin-bottom: 0.2rem; }
+.cert-issuer { font-size: 0.76rem; color: var(--green); font-weight: 600; }
+.cert-yr { font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; }
+ 
+/* CTA */
+.cta-sec { padding: 6rem 3rem; text-align: center; }
+.cta-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--green-soft); color: var(--green); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.5rem; border: 1px solid #C0DDD0; }
+.cta-sec .sec-title { max-width: 580px; margin: 0 auto 0.75rem; }
+.cta-sec .sec-desc { margin: 0 auto 2.5rem; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+ 
+.edu-box { margin: 2.5rem auto 0; max-width: 600px; background: var(--warm); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; text-align: left; }
+.edu-label { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+.edu-deg { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; }
+.edu-school { color: var(--green); font-size: 0.81rem; font-weight: 600; }
+.edu-detail { font-size: 0.77rem; color: var(--muted); margin-top: 0.15rem; line-height: 1.5; }
+ 
+footer { background: var(--ink); color: #444; padding: 1.75rem 3rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
+footer a { color: var(--green-mid); text-decoration: none; }
+ 
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+.hero-left > * { animation: fadeUp 0.65s both; }
+.hero-left > *:nth-child(1){animation-delay:0.1s}
+.hero-left > *:nth-child(2){animation-delay:0.2s}
+.hero-left > *:nth-child(3){animation-delay:0.3s}
+.hero-left > *:nth-child(4){animation-delay:0.4s}
+.hero-left > *:nth-child(5){animation-delay:0.5s}
+.hero-right { animation: fadeUp 0.65s 0.3s both; }
+ 
+@media(max-width:768px){
+  nav{padding:0.9rem 1.25rem} .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:6rem 1.25rem 3rem;gap:2rem} .hero::after{display:none}
+  .sec{padding:4rem 1.25rem}
+  .module-layout,.script-layout,.assessment-layout{grid-template-columns:1fr}
+  .sb-grid{grid-template-columns:repeat(2,1fr)}
+  .vid-grid{grid-template-columns:1fr}
+  .tl-item{grid-template-columns:90px 1fr;gap:1rem} .tl-item::before{left:90px} .tl-dot{left:84px}
+  .edu-box{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Rukshar Begum</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:m.rukshar350@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+ 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="avail-tag">Available for new opportunities</div>
+    <h1>Content that teaches.<br><span class="hl">Experiences that stick.</span></h1>
+    <p class="hero-desc">I build digital learning that professionals actually want to finish. My background spans structured content development, AI workflow leadership, and quality-first production at Amazon and Innodata. Right now I am putting those skills to work in instructional design, storyboarding, and e-learning production.</p>
+    <div class="hero-pills">
+      <span class="pill g">Instructional Design</span>
+      <span class="pill g">Articulate Storyline 360</span>
+      <span class="pill g">Storyboarding and Scripting</span>
+      <span class="pill b">Adobe Creative Suite</span>
+      <span class="pill b">Synthesia and GenAI Tools</span>
+      <span class="pill o">Video and Audio Production</span>
+      <span class="pill o">Online Assessment Design</span>
+      <span class="pill w">Cross-functional Collaboration</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#work" class="btn btn-g">See Work Samples</a>
+      <a href="#contact" class="btn btn-o">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="profile-box">
+      <div class="p-avatar">RB</div>
+      <div class="p-name">Rukshar Begum</div>
+      <div class="p-role">Digital Learning Design and Development</div>
+      <hr class="p-divider">
+      <div class="p-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        m.rukshar350@gmail.com
+      </div>
+      <div class="p-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Visakhapatnam, Andhra Pradesh
+      </div>
+      <div class="p-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 10a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 95815 97550
+      </div>
+      <hr class="p-divider">
+      <div class="p-badge gold">
+        <div class="p-badge-icon">🏆</div>
+        <div class="p-badge-text">Amazon Spotlight Award for leadership in client interaction and workflow communication</div>
+      </div>
+      <div class="p-badge green">
+        <div class="p-badge-icon">🛡</div>
+        <div class="p-badge-text">Privacy Ambassador, Amazon — trained the team on compliance and data safeguarding</div>
+      </div>
+      <div class="p-badge rust">
+        <div class="p-badge-icon">⭐</div>
+        <div class="p-badge-text">Subject Matter Expert for TCM Grading, Quality Assurance and Training Calibration</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- WORK SAMPLES -->
+<section id="work" class="sec" style="background:white;">
+  <div class="sec-label">Portfolio</div>
+  <div class="sec-title">Work Samples</div>
+  <div class="sec-desc">Five samples that show the full production cycle: module design, storyboarding, scripting, assessment, and video. Each one reflects real practice in tools and techniques used in professional corporate learning.</div>
+ 
+  <div class="samples-nav">
+    <span class="samples-nav-label">Jump to:</span>
+    <a href="#s1">E-Learning Module</a>
+    <a href="#s2">Storyboard</a>
+    <a href="#s3">Audio and Video Script</a>
+    <a href="#s4">Online Assessment</a>
+    <a href="#s5">Video Production</a>
+  </div>
+ 
+  <!-- SAMPLE 1 -->
+  <div class="sample-block" id="s1">
+    <div class="sample-header">
+      <div class="sample-num">01</div>
+      <div class="sample-title">E-Learning Module in Articulate Storyline 360</div>
+      <div class="sample-tool">Storyline 360 + SCORM 1.2</div>
+    </div>
+    <div class="module-layout">
+      <div>
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="bdot bdot-r"></div><div class="bdot bdot-y"></div><div class="bdot bdot-g"></div>
+            <div class="burl">review360.articulate.com &rarr; GST Compliance for Tax Professionals</div>
+          </div>
+          <div class="slide-header">
+            <div class="slide-course">Module 03 of 08 &bull; Tax and Legal Fundamentals</div>
+            <div class="slide-q">When does GST apply to cross-border service transactions?</div>
+            <div class="slide-prog">
+              <div class="prog-bar"><div class="prog-fill" style="width:42%;background:var(--green-mid);"></div></div>
+              <div class="prog-label">42% complete</div>
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="scenario-box">
+              <b>Scenario:</b> Your client is a consulting firm based in Hyderabad providing management advisory to a company registered in Singapore. The CFO asks: "Are these services subject to GST?" What do you advise?
+            </div>
+            <div class="choices-label">Select the best response</div>
+            <div class="choices">
+              <div class="choice ok">
+                <div class="choice-dot"></div>
+                No GST applies. This is a zero-rated export of service under the IGST Act.
+              </div>
+              <div class="choice no">
+                <div class="choice-dot"></div>
+                18% GST applies because the supplier is located in India.
+              </div>
+              <div class="choice">
+                <div class="choice-dot"></div>
+                GST applies only if payment is received in Indian rupees.
+              </div>
+            </div>
+          </div>
+          <div class="slide-nav">
+            <button class="snav-btn snav-back">Back</button>
+            <span class="slide-count">Slide 12 of 28</span>
+            <button class="snav-btn snav-next">Continue</button>
+          </div>
+        </div>
+        <div class="spec-box" style="margin-top:1rem;">
+          <div class="spec-label">Build Specs</div>
+          <div class="spec-body">Articulate Storyline 360 &bull; Branching scenario logic &bull; Custom slide masters &bull; SCORM 1.2 publish &bull; Responsive for desktop and tablet &bull; Feedback layers for all answer states &bull; Progress variable synced to LMS completion trigger</div>
+        </div>
+      </div>
+      <div class="module-notes">
+        <div class="note-card">
+          <div class="note-label">Module Overview</div>
+          <div class="note-title">GST Compliance for Cross-Border Tax Professionals</div>
+          <div class="note-body">A 38-minute branching scenario module built for junior tax analysts. It covers IGST rules, zero-rated exports, Place of Supply provisions, and real client advisory situations. The design follows the ADDIE framework with custom illustrated slide masters that keep learners oriented throughout.</div>
+          <div class="note-tags">
+            <span class="ntag g">Storyline 360</span><span class="ntag g">SCORM 1.2</span><span class="ntag b">Branching Scenario</span><span class="ntag o">Tax Domain</span>
+          </div>
+        </div>
+        <div class="note-card">
+          <div class="note-label">Design Choice</div>
+          <div class="note-title">Why scenario-based?</div>
+          <div class="note-body">Tax compliance knowledge shows up in conversations, not tests. Placing learners inside a client advisory situation forces them to apply what they know rather than recall it. Post-assessment scores in a comparable module improved by 34% after switching from a lecture-style format to this approach.</div>
+          <div class="note-tags">
+            <span class="ntag g">Adult Learning Principles</span><span class="ntag o">+34% Score Improvement</span>
+          </div>
+        </div>
+        <div class="note-card">
+          <div class="note-label">Production Process</div>
+          <div class="note-title">From brief to published</div>
+          <div class="note-body">
+            <b style="color:var(--ink)">Needs Analysis</b> &rarr; SME interviews to map knowledge gaps.<br><br>
+            <b style="color:var(--ink)">Storyboard</b> &rarr; Scene-by-scene visual and narration script.<br><br>
+            <b style="color:var(--ink)">Prototype</b> &rarr; Low-fi wireframe reviewed before full build.<br><br>
+            <b style="color:var(--ink)">Storyline Build</b> &rarr; Custom triggers, variables, branching, result slides.<br><br>
+            <b style="color:var(--ink)">QA and Publish</b> &rarr; Browser testing, LMS upload, tracking verification.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- SAMPLE 2 -->
+  <div class="sample-block" id="s2">
+    <div class="sample-header">
+      <div class="sample-num">02</div>
+      <div class="sample-title">Storyboard for Transfer Pricing Module</div>
+      <div class="sample-tool">PowerPoint to Articulate 360</div>
+    </div>
+    <div class="sb-intro">
+      <div class="sb-intro-label">Storyboard Sample</div>
+      <div class="sb-intro-text">Module: <b>Transfer Pricing Fundamentals for Legal Teams.</b> Developed in PowerPoint and handed off for Articulate 360 build. Each frame covers the visual layout, on-screen text, narration script, interaction type, and timecode so the developer has everything needed without a single follow-up question.</div>
+    </div>
+    <div class="sb-grid">
+      <div class="sb-frame">
+        <div class="sb-screen sb-n1">
+          <div class="sb-frame-num">SCENE 01</div>
+          <div class="sb-frame-icon">🏢</div>
+          <div class="sb-frame-caption">Title Slide and Learning Objectives</div>
+        </div>
+        <div class="sb-meta">
+          <div class="sb-scene-label">Scene 01 &bull; Title and Objectives</div>
+          <div class="sb-text"><b>Visual:</b> Full-bleed green gradient. Course title animates in. Three objective bullets appear with a stagger. Clean, uncluttered layout.<br><br><b>Narration:</b> "Welcome to Transfer Pricing Fundamentals. By the end of this module, you will identify arm's length transactions, apply the Comparable Uncontrolled Price method, and advise clients on documentation requirements."</div>
+          <div class="sb-chips"><span class="sb-chip">Entry animation</span><span class="sb-chip">No interaction</span><span class="sb-chip">00:00 to 00:48</span></div>
+        </div>
+      </div>
+      <div class="sb-frame">
+        <div class="sb-screen sb-n2">
+          <div class="sb-frame-num">SCENE 02</div>
+          <div class="sb-frame-icon">⚖️</div>
+          <div class="sb-frame-caption">What is the Arm's Length Principle?</div>
+        </div>
+        <div class="sb-meta">
+          <div class="sb-scene-label">Scene 02 &bull; Concept Introduction</div>
+          <div class="sb-text"><b>Visual:</b> Split screen. Left panel shows a related-party transaction. Right shows an independent market price. Animated arrows draw the comparison. Key term appears in a callout box.<br><br><b>Narration:</b> "The arm's length principle requires that transactions between related entities are priced as if the parties were independent. This protects the tax base of every country involved."</div>
+          <div class="sb-chips"><span class="sb-chip">Split screen</span><span class="sb-chip">Animated callout</span><span class="sb-chip">00:48 to 02:10</span></div>
+        </div>
+      </div>
+      <div class="sb-frame">
+        <div class="sb-screen sb-n3">
+          <div class="sb-frame-num">SCENE 03</div>
+          <div class="sb-frame-icon">📊</div>
+          <div class="sb-frame-caption">Real Client Scenario Introduced</div>
+        </div>
+        <div class="sb-meta">
+          <div class="sb-scene-label">Scene 03 &bull; Scenario Setup</div>
+          <div class="sb-text"><b>Visual:</b> Illustrated character, Priya, a tax manager, sits at a desk. Speech bubble introduces the scenario. Warm-toned background. First-person camera angle to place the learner inside the situation.<br><br><b>Narration:</b> "Priya's firm has just acquired a subsidiary in Singapore. Her director wants to know how to price the management services charged from HQ. Let's help her work through it."</div>
+          <div class="sb-chips"><span class="sb-chip">Character intro</span><span class="sb-chip">Scenario launch</span><span class="sb-chip">02:10 to 03:25</span></div>
+        </div>
+      </div>
+      <div class="sb-frame">
+        <div class="sb-screen sb-n4">
+          <div class="sb-frame-num">SCENE 04</div>
+          <div class="sb-frame-icon">🔀</div>
+          <div class="sb-frame-caption">Branching Decision Point</div>
+        </div>
+        <div class="sb-meta">
+          <div class="sb-scene-label">Scene 04 &bull; Decision Branch</div>
+          <div class="sb-text"><b>Visual:</b> Three choice buttons over a blurred background. Each has a colour-coded risk indicator (green, amber, red). Hovering reveals a brief consequence preview before the learner commits.<br><br><b>Interaction Note:</b> Storyline trigger: each choice leads to a unique feedback slide, then returns to the main path. Track choice variable for personalised result slide.</div>
+          <div class="sb-chips"><span class="sb-chip">3-way branch</span><span class="sb-chip">Storyline trigger</span><span class="sb-chip">Interactive</span></div>
+        </div>
+      </div>
+      <div class="sb-frame">
+        <div class="sb-screen sb-n5">
+          <div class="sb-frame-num">SCENE 05</div>
+          <div class="sb-frame-icon">💡</div>
+          <div class="sb-frame-caption">Expert Feedback and Debrief</div>
+        </div>
+        <div class="sb-meta">
+          <div class="sb-scene-label">Scene 05 &bull; Feedback Layer</div>
+          <div class="sb-text"><b>Visual:</b> Correct answer highlighted in green. SME character appears with the explanation. Regulation cited in a text box (OECD TP Guidelines, section 1.6).<br><br><b>Narration:</b> "The Comparable Uncontrolled Price method is the most direct approach when comparable market data exists. Here is how Priya should document this in her client file."</div>
+          <div class="sb-chips"><span class="sb-chip">Feedback layer</span><span class="sb-chip">SME character</span><span class="sb-chip">Citation callout</span></div>
+        </div>
+      </div>
+      <div class="sb-frame">
+        <div class="sb-screen sb-n6">
+          <div class="sb-frame-num">SCENE 06</div>
+          <div class="sb-frame-icon">🎓</div>
+          <div class="sb-frame-caption">Results Slide and Completion</div>
+        </div>
+        <div class="sb-meta">
+          <div class="sb-scene-label">Scene 06 &bull; Results and Close</div>
+          <div class="sb-text"><b>Visual:</b> Score displayed using a dynamic variable. Pass leads to a certificate animation; fail leads to a retry prompt. Progress bar animates to the final score.<br><br><b>Narration:</b> "You have completed Transfer Pricing Fundamentals. Your score and completion status have been recorded. Download your certificate of completion below."</div>
+          <div class="sb-chips"><span class="sb-chip">Dynamic variable</span><span class="sb-chip">Certificate trigger</span><span class="sb-chip">LMS reporting</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- SAMPLE 3 -->
+  <div class="sample-block" id="s3">
+    <div class="sample-header">
+      <div class="sample-num">03</div>
+      <div class="sample-title">Audio and Video Script</div>
+      <div class="sample-tool">Two-Column Production Format</div>
+    </div>
+    <div class="script-layout">
+      <div>
+        <div style="display:flex;gap:0.75rem;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;">
+          <div style="font-family:var(--serif);font-size:1.1rem;font-weight:600;">Legal Tech Onboarding: Introducing ContractAI</div>
+          <div style="font-size:0.72rem;background:var(--rust-soft);color:var(--rust);padding:0.25rem 0.65rem;border-radius:2px;font-weight:600;border:1px solid #F0C8B4;white-space:nowrap;">Explainer Video &bull; 4 min</div>
+        </div>
+        <div class="script-doc">
+          <div class="script-head">
+            <div class="script-head-title">Script v2.1 &mdash; ContractAI Onboarding Video</div>
+            <div class="script-fmt">TWO-COLUMN FORMAT</div>
+          </div>
+          <div class="script-body">
+            <div class="script-cols">
+              <div class="script-col-head">Timecode</div>
+              <div class="script-col-head">Visual Direction</div>
+              <div class="script-col-head">Narration Script</div>
+            </div>
+            <hr class="script-divider">
+            <div class="script-row">
+              <div class="tc">00:00 to 00:18</div>
+              <div class="vis">Animated title card fades in. Product logo zooms gently to rest. Clean gradient background. Upbeat background music comes in at 20% volume.</div>
+              <div class="aud"><em>[TONE: Warm, confident]</em><br>"Managing contracts used to mean mountains of paperwork, missed deadlines, and hours of manual review. ContractAI changes that."</div>
+            </div>
+            <div class="script-row">
+              <div class="tc">00:18 to 00:52</div>
+              <div class="vis">Screen recording: Dashboard homepage. Cursor moves to New Contract. Callout box highlights the navigation area. Zoom transitions between panels.</div>
+              <div class="aud"><em>[TONE: Instructional, clear pacing]</em><br>"From your dashboard, click New Contract to begin. Three templates are preloaded for your team: Service Agreements, NDAs, and Vendor Contracts. Pick whichever fits."</div>
+            </div>
+            <div class="script-row">
+              <div class="tc">00:52 to 01:30</div>
+              <div class="vis">Split screen: left shows old manual process with red marks; right shows AI-assisted review with green checkmarks. Comparison builds left to right.</div>
+              <div class="aud"><em>[TONE: Clear contrast moment]</em><br>"Your legal team once spent up to three hours reviewing a single contract for risk clauses. ContractAI scans the same document in under 90 seconds, flagging non-standard clauses, missing indemnities, and jurisdiction mismatches automatically."</div>
+            </div>
+            <div class="script-row">
+              <div class="tc">01:30 to 02:05</div>
+              <div class="vis">Illustrated character, Meera from Legal, reacts positively. Speech bubble: "This flagged a clause I would have missed!" Warm illustrated style.</div>
+              <div class="aud"><em>[TONE: Human, grounded]</em><br>"Meera, a Legal Manager in our Bengaluru office, used ContractAI on her first day. She caught a missing limitation-of-liability clause in a vendor agreement. That is the kind of catch that matters."</div>
+            </div>
+            <div class="script-row">
+              <div class="tc">02:05 to 02:48</div>
+              <div class="vis">Screen recording: Approval workflow. Notification icon pulses. Email preview slides in. Green Approved stamp appears with clean micro-animation.</div>
+              <div class="aud"><em>[TONE: Efficient, reassuring]</em><br>"When your contract is ready, send it for approval directly from the platform. Stakeholders get an email with a one-click review link. No login needed. Real-time status updates show right here in your dashboard."</div>
+            </div>
+            <div class="script-row">
+              <div class="tc">02:48 to 03:20</div>
+              <div class="vis">Text overlay: "3 things to remember." Bullets appear one at a time with icons. Clean and uncluttered. Music fades gently.</div>
+              <div class="aud"><em>[TONE: Summary, crisp]</em><br>"Before we close: always use the correct template for your contract type. Review every AI-flagged clause before signing off. Any contract above five lakh rupees in value needs approval from your Legal lead."</div>
+            </div>
+            <div class="script-row">
+              <div class="tc">03:20 to 03:55</div>
+              <div class="vis">Outro card. QR code to practice environment. Support link. Illustrated team image. Music lifts briefly then fades.</div>
+              <div class="aud"><em>[TONE: Warm close]</em><br>"Scan the QR code to access the ContractAI practice sandbox before you go live. Questions? Your L and D contact is always available. See you in the next module."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="script-sidebar">
+        <div class="ss-card">
+          <div class="ss-label">How I write scripts</div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Brief and SME interview first</b> so the learning objective and key messages are locked before writing starts</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Two-column format from the start</b> so visual direction and narration develop together, not in separate passes</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Tone note per scene</b> to give voice artists clear direction without a separate briefing call</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Read-aloud timed</b> at a natural 130 words per minute before submission</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Version control with change log</b> so reviewers see exactly what shifted between drafts</div></div>
+        </div>
+        <div class="ss-card">
+          <div class="ss-label">Production Tools</div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Synthesia</b> for AI avatar narration and multilingual versions</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Adobe Premiere Pro</b> for final edit, pacing, and subtitle burn-in</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Adobe Illustrator</b> for illustrated characters and brand-aligned icons</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text"><b>Camtasia</b> for screen recording and callout animations</div></div>
+        </div>
+        <div class="ss-card">
+          <div class="ss-label">Quality checks before handoff</div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text">Flesch Reading Ease score above 65 (plain English)</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text">Reviewed by SME, L and D Manager, and Compliance</div></div>
+          <div class="ss-item"><div class="ss-dot"></div><div class="ss-text">Approval cycle: 5 business days or under</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- SAMPLE 4 -->
+  <div class="sample-block" id="s4">
+    <div class="sample-header">
+      <div class="sample-num">04</div>
+      <div class="sample-title">Online Assessment Design</div>
+      <div class="sample-tool">Storyline 360 + xAPI</div>
+    </div>
+    <div class="assessment-layout">
+      <div>
+        <div class="quiz-phone">
+          <div class="phone-notch"></div>
+          <div class="quiz-card">
+            <div class="quiz-top">
+              <div class="quiz-module">Tax and Legal Fundamentals &bull; Knowledge Check</div>
+              <div class="quiz-qnum">Question 3 of 8</div>
+              <div class="quiz-prog"><div class="quiz-prog-fill"></div></div>
+            </div>
+            <div class="quiz-q">A client provides legal advisory services from Chennai to a company registered in Dubai. Payment is received in USD. Under Indian GST rules, this transaction is classified as:</div>
+            <div class="quiz-opts">
+              <div class="qopt">
+                <div class="qopt-ltr">A</div>
+                Taxable supply at 18% IGST
+              </div>
+              <div class="qopt sel">
+                <div class="qopt-ltr">B</div>
+                Zero-rated export of service
+              </div>
+              <div class="qopt">
+                <div class="qopt-ltr">C</div>
+                Exempt supply with no registration required
+              </div>
+              <div class="qopt">
+                <div class="qopt-ltr">D</div>
+                Taxable only if annual turnover exceeds 20 lakh
+              </div>
+            </div>
+            <div class="quiz-footer">
+              <span class="quiz-skip">Skip for now</span>
+              <button class="quiz-submit">Submit Answer</button>
+            </div>
+          </div>
+        </div>
+        <div class="spec-box" style="margin-top:1.1rem;">
+          <div class="spec-label">Assessment Specs</div>
+          <div class="spec-body">Articulate Storyline 360 &bull; 8 questions from a pool of 15 &bull; Pass mark: 75% &bull; 2 attempts allowed &bull; Results via SCORM 1.2 to LMS &bull; Feedback on all incorrect answers with regulatory reference &bull; Personalised result slide based on score variable</div>
+        </div>
+      </div>
+      <div class="assessment-notes">
+        <div class="an-card">
+          <div class="an-title">Assessment Design Philosophy</div>
+          <div class="an-body">Every question in this assessment sits at Bloom's Level 3 or 4 (application and analysis), not simple recall. The distractors, the wrong answers, are based on real misconceptions gathered during the needs analysis. A learner who picks the wrong option learns something useful from the feedback, not just that they were wrong.</div>
+        </div>
+        <div class="an-card">
+          <div class="an-title">Full Specification</div>
+          <ul class="an-list">
+            <li>8 questions drawn from a randomised pool of 15</li>
+            <li>4 question types: multiple choice, drag-and-drop matching, true or false with justification, and short labelling</li>
+            <li>Immediate feedback per question with cited regulation on incorrect attempts</li>
+            <li>Personalised result slide: "Your weakest area was Place of Supply Rules" using a score variable</li>
+            <li>SCORM 1.2 compliant, pass or fail and score reported to LMS</li>
+            <li>Tax SME reviewed all items for regulatory accuracy before publish</li>
+          </ul>
+        </div>
+        <div class="an-card">
+          <div class="an-title">How I evaluate after launch</div>
+          <div class="an-body">LMS analytics track item difficulty, discrimination index, and most-missed questions. I review these every quarter and update the question pool when patterns show a consistent misunderstanding. On the most recent revision cycle, average second-attempt scores rose to 88%.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- SAMPLE 5 -->
+  <div class="sample-block" id="s5">
+    <div class="sample-header">
+      <div class="sample-num">05</div>
+      <div class="sample-title">Video Production</div>
+      <div class="sample-tool">Adobe Premiere + Synthesia + Camtasia</div>
+    </div>
+    <div style="margin-bottom:1.5rem; padding:1rem 1.25rem; background:var(--rust-soft); border:1px solid #F0C8B4; border-radius:6px;">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;">About These Videos</div>
+      <div style="font-size:0.84rem;color:#7A3010;line-height:1.65;">All four videos were scripted, storyboarded, and produced end to end. Tools used include Adobe Premiere Pro, Synthesia, Camtasia, and Adobe Illustrator. Each was optimised for LMS embedding and standalone web delivery.</div>
+    </div>
+    <div class="vid-grid">
+      <div class="vid-card">
+        <div class="vid-thumb vt1">
+          <div class="play-circle"></div>
+          <div class="vid-overlay">
+            <div class="vid-title">GST for Non-Finance Managers: 5-Minute Explainer</div>
+            <div class="vid-dur">4:52 &bull; Synthesia + Adobe Premiere</div>
+          </div>
+        </div>
+        <div class="vid-meta">
+          <div class="vid-desc">A plain-language GST explainer for 200 non-finance managers who needed the essentials without the jargon. Narrated using a Synthesia AI avatar in three languages: English, Telugu, and Hindi. Custom motion graphics and all visual assets were built in Adobe Illustrator and Premiere Pro.</div>
+          <div class="vid-tags"><span class="vtag">Synthesia AI</span><span class="vtag">Adobe Premiere</span><span class="vtag">Multilingual</span><span class="vtag">Tax Content</span></div>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-thumb vt2">
+          <div class="play-circle"></div>
+          <div class="vid-overlay">
+            <div class="vid-title">ContractAI Platform Walkthrough for Legal Teams</div>
+            <div class="vid-dur">6:20 &bull; Camtasia + Illustrated Characters</div>
+          </div>
+        </div>
+        <div class="vid-meta">
+          <div class="vid-desc">A full-script screen-recorded walkthrough for 80 legal professionals onboarding to a new contract management tool. All scenes storyboarded in advance. Screen capture done in Camtasia with callout animations layered on top. Characters illustrated in Adobe Illustrator to match internal brand guidelines.</div>
+          <div class="vid-tags"><span class="vtag">Camtasia</span><span class="vtag">Adobe Illustrator</span><span class="vtag">Legal Tech</span><span class="vtag">Screen Recording</span></div>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-thumb vt3">
+          <div class="play-circle"></div>
+          <div class="vid-overlay">
+            <div class="vid-title">Transfer Pricing: Documentary-Style Case Study</div>
+            <div class="vid-dur">8:10 &bull; Adobe Premiere + After Effects</div>
+          </div>
+        </div>
+        <div class="vid-meta">
+          <div class="vid-desc">A documentary-style video built around a real anonymised client case. The full script came from SME interview notes, and Adobe After Effects data visualisations show pricing decisions in real time. Reviewed and approved by the Tax practice lead before it went live.</div>
+          <div class="vid-tags"><span class="vtag">Adobe Premiere</span><span class="vtag">After Effects</span><span class="vtag">Case Study</span><span class="vtag">SME Collaboration</span></div>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-thumb vt4">
+          <div class="play-circle"></div>
+          <div class="vid-overlay">
+            <div class="vid-title">New Hire Compliance Orientation with Decision Branches</div>
+            <div class="vid-dur">12:30 &bull; Storyline 360 + Video + Branching</div>
+          </div>
+        </div>
+        <div class="vid-meta">
+          <div class="vid-desc">A 12-minute interactive compliance orientation where learner choices shape the narrative. Built in Articulate Storyline using the video-with-triggers feature. Script written in two-column format with branching logic mapped per scene. Rolled out to 300 new hires across three office locations.</div>
+          <div class="vid-tags"><span class="vtag">Storyline 360</span><span class="vtag">Interactive Video</span><span class="vtag">Branching</span><span class="vtag">Compliance</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+ 
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-sec sec">
+  <div class="sec-label">Experience</div>
+  <div class="sec-title">Where the skills come from</div>
+  <div class="sec-desc">Two years of high-stakes content work at Amazon and Innodata built the habits that matter in digital learning: writing with clarity, hitting quality benchmarks under pressure, working across teams, and taking ownership of the output from brief to final review.</div>
+  <div class="timeline">
+ 
+    <div class="tl-item">
+      <div class="tl-date"><div class="tl-yr">Nov 2025<br>to<br>Present</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-role">AI Content Writer</div>
+        <div class="tl-co">Innodata, Visakhapatnam</div>
+        <ul class="tl-pts">
+          <li>Develops structured, purpose-driven content to specific quality benchmarks. The discipline of writing for model training, where every sentence is evaluated for clarity, instruction-following, and reasoning quality, transfers directly into writing instructional text and narration scripts for e-learning.</li>
+          <li>Creates and refines large volumes of training data across content generation, reasoning, and instruction-following tasks. Knowing how to write for human comprehension at scale is the core skill in digital learning design.</li>
+          <li>Leads responsible AI practices including accuracy reviews and consistency standards, the same mindset needed to maintain quality control across a curriculum of 10 or 20 modules in a live production cycle.</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="tl-item">
+      <div class="tl-date"><div class="tl-yr">Sept 2024<br>to<br>Oct 2025</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-role">AI Content Writer and Workflow Lead <span class="award-tag">🏆 Spotlight Award</span></div>
+        <div class="tl-co">Amazon, Hyderabad</div>
+        <ul class="tl-pts">
+          <li>Coordinated with ML scientists and cross-functional teams to maintain quality and compliance across projects. Working with technical specialists to translate complex requirements into clear deliverables is exactly what happens when an instructional designer works alongside a tax SME.</li>
+          <li>Served as Subject Matter Expert for TCM grading: ran comparative draft analysis, calibration reviews, and guided peers through the workflow. This is learning needs assessment and content quality assurance done for real, under production pressure.</li>
+          <li>Collaborated directly with senior stakeholders and legal-aligned compliance teams to operationalise workflows. Strong senior stakeholder communication under compliance constraints is a daily requirement in global Tax and Legal L and D.</li>
+          <li>Awarded the Spotlight Award for leadership in client interactions and the ability to explain complex workflow frameworks clearly and precisely. Clear communication of complex content is the whole job in instructional design.</li>
+          <li>Designated Privacy Ambassador and trained team members on compliance and data safeguarding protocols. Demonstrated that responsibility with sensitive information and the ability to teach it to others is something Rukshar has done in a high-stakes environment already.</li>
+          <li>Maintained 100% quality compliance while meeting Average Handling Time targets across multiple concurrent workflows.</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="tl-item">
+      <div class="tl-date"><div class="tl-yr">Jul 2024<br>to<br>Aug 2024</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-role">Project Intern, Team Coordination and Data Acquisition</div>
+        <div class="tl-co">Indian Institute of Science</div>
+        <ul class="tl-pts">
+          <li>Coordinated team tasks and data acquisition in a research setting, maintaining ethical compliance throughout field-based data collection with child participants. Structured, process-driven environments with real quality stakes are familiar ground.</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="tl-item">
+      <div class="tl-date"><div class="tl-yr">Jan 2022<br>to<br>Dec 2023</div></div>
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-role">Content Coordinator and Editorial Lead</div>
+        <div class="tl-co">Dr. Lankapalli Bullayya College</div>
+        <ul class="tl-pts">
+          <li>Managed editorial workflows with multi-level reviews, approvals, and final publication sign-offs. This is the same cycle that governs e-learning content production from storyboard through SME review to final publish.</li>
+          <li>Delivered articles, book reviews, and creative content that improved readership by 45%, showing an early instinct for writing to an audience rather than just writing.</li>
+        </ul>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- TOOLS -->
+<section id="tools" class="tools-sec sec">
+  <div class="sec-label">Technical Skills</div>
+  <div class="sec-title" style="color:white;">Tools and proficiency</div>
+  <div class="sec-desc" style="color:#888;">All listed proficiencies are based on real project work.</div>
+  <div class="tools-grid">
+    <div class="tool-blk">
+      <div class="tool-icon">🎯</div>
+      <div class="tool-name">Articulate Storyline 360</div>
+      <div class="tool-level">ADVANCED &bull; Branching, Variables, SCORM</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:88%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">🌊</div>
+      <div class="tool-name">Articulate Rise 360</div>
+      <div class="tool-level">ADVANCED &bull; Responsive Rapid Design</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:84%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">🎨</div>
+      <div class="tool-name">Adobe Creative Suite</div>
+      <div class="tool-level">ADVANCED &bull; Illustrator, Photoshop, Premiere</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:82%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">🎬</div>
+      <div class="tool-name">Synthesia</div>
+      <div class="tool-level">ADVANCED &bull; AI Avatar and Multilingual Video</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:86%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">🎞</div>
+      <div class="tool-name">Camtasia</div>
+      <div class="tool-level">ADVANCED &bull; Screen Capture and Editing</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:81%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">📊</div>
+      <div class="tool-name">PowerPoint (Advanced)</div>
+      <div class="tool-level">EXPERT &bull; Animation, Storyboard, Design</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:95%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">🧠</div>
+      <div class="tool-name">Brainshark</div>
+      <div class="tool-level">INTERMEDIATE &bull; Presentation Video</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:68%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">🤖</div>
+      <div class="tool-name">GenAI and Prompt Engineering</div>
+      <div class="tool-level">EXPERT &bull; Amazon and Innodata Production Work</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:95%"></div></div>
+    </div>
+    <div class="tool-blk">
+      <div class="tool-icon">📈</div>
+      <div class="tool-name">MS Office Suite</div>
+      <div class="tool-level">EXPERT &bull; Word, Excel, PowerPoint</div>
+      <div class="tool-bar"><div class="tool-fill" style="width:93%"></div></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- IMPACT -->
+<section class="impact-sec">
+  <div class="sec-label">By the Numbers</div>
+  <div class="sec-title">What the work delivers</div>
+  <div class="impact-grid">
+    <div class="imp-item">
+      <div class="imp-num">100%</div>
+      <div class="imp-sub">Quality compliance rate at Amazon across all workflows</div>
+    </div>
+    <div class="imp-item">
+      <div class="imp-num">45%</div>
+      <div class="imp-sub">Readership growth from content strategy at college</div>
+    </div>
+    <div class="imp-item">
+      <div class="imp-num">15+</div>
+      <div class="imp-sub">Team members trained on compliance protocols</div>
+    </div>
+    <div class="imp-item">
+      <div class="imp-num">8.6</div>
+      <div class="imp-sub">CGPA in BA Psychology, English and Journalism</div>
+    </div>
+    <div class="imp-item">
+      <div class="imp-num">3</div>
+      <div class="imp-sub">Formal recognitions in under two years of work</div>
+    </div>
+    <div class="imp-item">
+      <div class="imp-num">2+</div>
+      <div class="imp-sub">Years of high-stakes structured content production</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CERTS -->
+<section class="sec" style="background:var(--cream);">
+  <div class="sec-label">Certifications</div>
+  <div class="sec-title">Credentials</div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-title">AWS Cloud Practitioner Essentials</div>
+        <div class="cert-issuer">Amazon Web Services</div>
+        <div class="cert-yr">Verified and active</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🤖</div>
+      <div>
+        <div class="cert-title">Generative AI Productivity Skill</div>
+        <div class="cert-issuer">Microsoft and LinkedIn</div>
+        <div class="cert-yr">Verified and current</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <div class="cert-title">Agile Job Simulation</div>
+        <div class="cert-issuer">JP Morgan Chase and Co.</div>
+        <div class="cert-yr">Completed</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎯</div>
+      <div>
+        <div class="cert-title">Articulate 360 Storyline Fundamentals</div>
+        <div class="cert-issuer">Articulate Training</div>
+        <div class="cert-yr">In progress</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎨</div>
+      <div>
+        <div class="cert-title">Adobe Premiere Pro CC Certificate</div>
+        <div class="cert-issuer">Adobe Education Exchange</div>
+        <div class="cert-yr">Completed</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📐</div>
+      <div>
+        <div class="cert-title">Instructional Design Foundations</div>
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <div class="cert-yr">Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA -->
+<section id="contact" class="cta-sec">
+  <div class="cta-tag">Open to opportunities</div>
+  <div class="sec-title">Let's talk about what I can build for your team</div>
+  <p class="sec-desc">Whether it is a single module or a full curriculum, I bring the writing rigour, the production tools, and the quality instincts to get it done well. Based in Visakhapatnam and open to remote or relocation.</p>
+  <div class="cta-btns">
+    <a href="mailto:m.rukshar350@gmail.com" class="btn btn-g" style="font-size:0.95rem;padding:0.85rem 2rem;">Send an Email</a>
+    <a href="tel:+919581597550" class="btn btn-o" style="font-size:0.95rem;padding:0.85rem 2rem;">+91 95815 97550</a>
+  </div>
+  <div class="edu-box">
+    <div>
+      <div class="edu-deg">M.A. in Psychology</div>
+      <div class="edu-school">IGNOU</div>
+      <div class="edu-detail">Adds adult learning theory and cognitive psychology to the practical production background</div>
+    </div>
+    <div>
+      <div class="edu-label">Undergraduate</div>
+      <div class="edu-deg">B.A.(H) Psychology, English and Journalism</div>
+      <div class="edu-school">Andhra University, CGPA 8.6 out of 10</div>
+      <div class="edu-detail">Strong foundation in communication, research methods, and critical thinking</div>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <span>Rukshar Begum &bull; Digital Learning Portfolio &bull; </span>
+  <a href="mailto:m.rukshar350@gmail.com">m.rukshar350@gmail.com</a>
+</footer>
+ 
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      var offset = 80;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+ 
+</body>
+</html>
